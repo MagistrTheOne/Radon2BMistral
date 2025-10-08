@@ -1,0 +1,10 @@
+{
+  "model_name": "radon",
+  "base_model": "microsoft/DialoGPT-medium",
+  "architecture": "mistral",
+  "parameters": 354823168,
+  "size_mb": 676.771484375,
+  "dtype": "float16",
+  "status": "pretrained",
+  "note": "This is a pretrained model adapted for RADON architecture"
+}
