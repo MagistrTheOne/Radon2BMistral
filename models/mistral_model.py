@@ -5,6 +5,8 @@ Modern architecture with sliding window attention and efficient components
 
 import torch
 import torch.nn as nn
+import json
+import os
 from typing import Optional, Tuple, List, Union
 from transformers import PreTrainedModel
 from transformers.modeling_outputs import CausalLMOutputWithPast
@@ -264,6 +266,9 @@ class MistralForCausalLM(PreTrainedModel):
         # Language modeling head
         self.lm_head = nn.Linear(config.hidden_size, config.vocab_size, bias=False)
         
+        # Load system prompt for RADON identity
+        self.system_prompt = self._load_system_prompt()
+        
         # Initialize weights
         self.post_init()
     
@@ -278,6 +283,34 @@ class MistralForCausalLM(PreTrainedModel):
     
     def set_output_embeddings(self, new_embeddings):
         self.lm_head = new_embeddings
+    
+    def _load_system_prompt(self):
+        """Load RADON system prompt for model identity"""
+        try:
+            prompt_path = os.path.join(os.path.dirname(__file__), '..', 'configs', 'radon_system_prompt.json')
+            if os.path.exists(prompt_path):
+                with open(prompt_path, 'r', encoding='utf-8') as f:
+                    prompt_data = json.load(f)
+                return prompt_data.get('system_prompt', '')
+            return ''
+        except Exception:
+            return ''
+    
+    def get_system_prompt(self):
+        """Get RADON system prompt"""
+        return self.system_prompt
+    
+    def get_model_identity(self):
+        """Get RADON model identity information"""
+        try:
+            prompt_path = os.path.join(os.path.dirname(__file__), '..', 'configs', 'radon_system_prompt.json')
+            if os.path.exists(prompt_path):
+                with open(prompt_path, 'r', encoding='utf-8') as f:
+                    prompt_data = json.load(f)
+                return prompt_data.get('identity', {})
+            return {}
+        except Exception:
+            return {}
     
     def forward(
         self,

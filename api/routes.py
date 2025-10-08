@@ -46,6 +46,8 @@ class GenerationResponse(BaseModel):
     model_name: str = Field(..., description="Model name")
     model_type: str = Field(..., description="Model type used")
     request_id: str = Field(..., description="Request ID")
+    model_identity: Optional[Dict[str, Any]] = Field(None, description="RADON model identity information")
+    system_prompt: Optional[str] = Field(None, description="RADON system prompt")
 
 
 class TokenizeRequest(BaseModel):
@@ -175,13 +177,23 @@ async def generate_text(request: GenerationRequest, background_tasks: Background
             }
             log_metrics(logger, metrics, model_name=model.model_type, user_id=request.user_id, request_id=request_id)
         
+        # Get RADON identity information if available
+        model_identity = None
+        system_prompt = None
+        if hasattr(model, 'get_model_identity'):
+            model_identity = model.get_model_identity()
+        if hasattr(model, 'get_system_prompt'):
+            system_prompt = model.get_system_prompt()
+        
         return GenerationResponse(
             generated_text=generated_text,
             prompt=request.prompt,
             generation_time=generation_time,
             model_name=model.config.model_name,
             model_type=model.model_type,
-            request_id=request_id
+            request_id=request_id,
+            model_identity=model_identity,
+            system_prompt=system_prompt
         )
         
     except Exception as e:
