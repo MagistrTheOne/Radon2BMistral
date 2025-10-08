@@ -1,0 +1,10 @@
+[
+  {
+    "prompt": "В этой статье мы рассмотрим основы машинного обучения и его применение в различных областях. Машинное обучение - это подраздел искусственного интеллекта, который позволяет компьютерам обучаться и принимать решения без явного программирования. Существует три основных типа машинного обучения: обучение с учителем, обучение без учителя и обучение с подкреплением. Каждый из этих типов имеет свои особенности и области применения.",
+    "category": "long_context"
+  },
+  {
+    "prompt": "The following is a comprehensive guide to machine learning algorithms and their implementations. We will cover supervised learning, unsupervised learning, and reinforcement learning approaches. Each method has its strengths and weaknesses, and the choice depends on the specific problem domain and available data.",
+    "category": "long_context"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "prompt": "def calculate_loss(y_true, y_pred):",
+    "category": "code_generation"
+  },
+  {
+    "prompt": "class NeuralNetwork:",
+    "category": "code_generation"
+  },
+  {
+    "prompt": "import torch.nn as nn",
+    "category": "code_generation"
+  },
+  {
+    "prompt": "def train_epoch(model, dataloader, optimizer):",
+    "category": "code_generation"
+  },
+  {
+    "prompt": "def evaluate_model(model, test_data):",
+    "category": "code_generation"
+  }
+]

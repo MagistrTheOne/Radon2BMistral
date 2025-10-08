@@ -1,0 +1,9 @@
+{
+  "model_name": "radon-small",
+  "architecture": "mistral",
+  "parameters": 21764608,
+  "size_mb": 41.5126953125,
+  "dtype": "float16",
+  "initialization": "random",
+  "note": "This is a small initialized model with random weights. Training required for actual performance."
+}

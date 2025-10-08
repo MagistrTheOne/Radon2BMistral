@@ -1,0 +1,20 @@
+[
+  {
+    "prompt": "Объясни, что такое машинное обучение",
+    "expected_response": "Машинное обучение - это подраздел искусственного интеллекта...",
+    "category": "explanation",
+    "language": "russian"
+  },
+  {
+    "prompt": "Write a Python function to calculate accuracy",
+    "expected_response": "def calculate_accuracy(y_true, y_pred):\n    return (y_true == y_pred).mean()",
+    "category": "code_generation",
+    "language": "english"
+  },
+  {
+    "prompt": "Создай нейронную сеть для классификации изображений",
+    "expected_response": "import torch.nn as nn\n\nclass ImageClassifier(nn.Module):\n    def __init__(self, num_classes):\n        super().__init__()\n        self.conv1 = nn.Conv2d(3, 32, 3)\n        # ...",
+    "category": "code_generation",
+    "language": "russian"
+  }
+]

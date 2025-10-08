@@ -1,0 +1,26 @@
+{
+  "radon_datasets": {
+    "description": "RADON Mistral-based transformer datasets collection",
+    "version": "1.0.0",
+    "created_by": "MagistrTheOne",
+    "model": "MagistrTheOne/RadonSAI",
+    "datasets": [
+      "radon-test-multilingual",
+      "radon-test-long_context",
+      "radon-test-code_generation",
+      "radon-examples"
+    ],
+    "total_examples": 15,
+    "languages": [
+      "russian",
+      "english",
+      "mixed"
+    ],
+    "categories": [
+      "training",
+      "testing",
+      "examples",
+      "corpus"
+    ]
+  }
+}

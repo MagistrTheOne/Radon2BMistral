@@ -1,0 +1,22 @@
+[
+  {
+    "prompt": "Машинное обучение - это",
+    "category": "multilingual"
+  },
+  {
+    "prompt": "Machine learning is",
+    "category": "multilingual"
+  },
+  {
+    "prompt": "def train_model():",
+    "category": "multilingual"
+  },
+  {
+    "prompt": "Создай нейронную сеть для",
+    "category": "multilingual"
+  },
+  {
+    "prompt": "Implement a function that",
+    "category": "multilingual"
+  }
+]
