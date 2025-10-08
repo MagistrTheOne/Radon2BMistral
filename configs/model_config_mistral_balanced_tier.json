@@ -1,0 +1,53 @@
+{
+  "model_name": "radon",
+  "model_type": "mistral",
+  "hidden_size": 3072,
+  "num_layers": 24,
+  "num_attention_heads": 24,
+  "num_kv_heads": 6,
+  "intermediate_size": 8192,
+  "vocab_size": 32000,
+  "max_position_embeddings": 16384,
+  "sliding_window": 4096,
+  "rope_theta": 10000.0,
+  "rms_norm_eps": 1e-6,
+  "activation_function": "silu",
+  "layer_norm_eps": 1e-6,
+  "use_cache": true,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "torch_dtype": "float16",
+  "pad_token_id": 0,
+  "eos_token_id": 2,
+  "bos_token_id": 1,
+  "unk_token_id": 3,
+  "attention_dropout": 0.0,
+  "hidden_dropout": 0.0,
+  "initializer_range": 0.02,
+  "use_flash_attention_2": true,
+  "gradient_checkpointing": true,
+  "tie_word_embeddings": false,
+  "architectures": ["MistralForCausalLM"],
+  "auto_map": {
+    "AutoModelForCausalLM": "models.mistral_model.MistralForCausalLM"
+  },
+  "transformers_version": "4.36.0",
+  "model_size": "7B",
+  "parameters": 7000000000,
+  "context_length": 16384,
+  "languages": ["russian", "english", "code"],
+  "optimizations": [
+    "flash_attention_2",
+    "gradient_checkpointing", 
+    "fp16",
+    "quantization_ready"
+  ],
+  "performance": {
+    "memory_efficient": true,
+    "speed_optimized": true,
+    "production_ready": true,
+    "balanced": true
+  },
+  "creator": "MagistrTheOne",
+  "description": "RADON Balanced Tier: 7B parameter Mistral-based Russian-English transformer with optimal balance between performance and resource requirements."
+}

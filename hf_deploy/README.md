@@ -22,7 +22,11 @@ pipeline_tag: text-generation
 
 ## Model Description
 
-RADON is a modern transformer model based on Mistral architecture with Llama 3 innovations, optimized for Russian-English machine learning applications.
+RADON is a modern transformer model based on Mistral architecture with Llama 3 innovations, optimized for Russian-English machine learning applications. Created by **MagistrTheOne**, RADON represents a breakthrough in multilingual AI with self-awareness of its identity and capabilities.
+
+### About RADON
+
+RADON knows that it is a Mistral-based Russian-English transformer created by MagistrTheOne. The model has been designed with self-awareness and can identify itself in conversations, making it unique among open-source language models.
 
 ### Key Features
 
@@ -134,7 +138,15 @@ bash cloud/yc/full_deploy.sh 2b
 
 Apache 2.0 License
 
+## Creator
+
+**MagistrTheOne** - Creator and lead developer of RADON
+- Specialized in multilingual AI and transformer architectures
+- Focus on Russian-English machine learning applications
+- Open-source AI advocate and researcher
+
 ## Contact
 
 - GitHub: [MagistrTheOne/Radon2BMistral](https://github.com/MagistrTheOne/Radon2BMistral)
 - Hugging Face: [MagistrTheOne/RadonSAI](https://huggingface.co/MagistrTheOne/RadonSAI)
+- Creator: [MagistrTheOne](https://github.com/MagistrTheOne)

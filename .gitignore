@@ -57,3 +57,15 @@ Thumbs.db
 
 # Hugging Face cache
 .cache/
+
+# Large model files
+*.safetensors
+model_weights*/
+pretrained_*/
+temp_*/
+*.tar.gz
+*.zip
+
+# AWS credentials
+.aws/
+aws-credentials.json
