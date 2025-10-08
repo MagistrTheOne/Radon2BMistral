@@ -1,0 +1,69 @@
+name: deploy-yc
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install YC CLI
+        run: |
+          curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
+          echo "${HOME}/yandex-cloud/bin" >> $GITHUB_PATH
+
+      - name: YC auth
+        env:
+          YC_OAUTH: ${{ secrets.YC_OAUTH }}
+          YC_FOLDER_ID: ${{ secrets.YC_FOLDER_ID }}
+          YC_CLOUD_ID:  ${{ secrets.YC_CLOUD_ID }}
+        run: |
+          yc config set token "$YC_OAUTH"
+          yc config set folder-id "$YC_FOLDER_ID"
+          yc config set cloud-id  "$YC_CLOUD_ID"
+
+      - name: Docker login to YCR
+        run: yc container registry configure-docker
+
+      - name: Build & Push image
+        env:
+          YC_REGISTRY: ${{ secrets.YC_REGISTRY }}  # cr.yandex/<region>/<registry_id>
+        run: |
+          TAG=${GITHUB_SHA::7}
+          docker build -t $YC_REGISTRY/radon-api:$TAG .
+          docker push $YC_REGISTRY/radon-api:$TAG
+          echo "TAG=$TAG" >> $GITHUB_ENV
+
+      - name: Deploy serverless revision
+        env:
+          YC_REGISTRY: ${{ secrets.YC_REGISTRY }}
+          YC_CONTAINER_NAME: ${{ secrets.YC_CONTAINER_NAME }}
+          RADON_ARCH: gpt2
+          RADON_CONFIG: configs/model_config_small.json
+          LOG_LEVEL: INFO
+        run: |
+          yc serverless container create --name "$YC_CONTAINER_NAME" || true
+          yc serverless container revision deploy \
+            --container-name "$YC_CONTAINER_NAME" \
+            --image $YC_REGISTRY/radon-api:${TAG} \
+            --cores 1 --memory 512MB --concurrency 4 \
+            --execution-timeout 30s \
+            --env RADON_ARCH=$RADON_ARCH \
+            --env RADON_CONFIG=$RADON_CONFIG \
+            --env LOG_LEVEL=$LOG_LEVEL
+          yc serverless container allow-unauthenticated-invoke --name "$YC_CONTAINER_NAME" || true
+          echo "URL=$(yc serverless container get --name $YC_CONTAINER_NAME --format json | jq -r '.status.url')" >> $GITHUB_ENV
+
+      - name: Show public URL
+        run: |
+          echo "Public URL: $URL"
+

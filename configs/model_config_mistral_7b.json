@@ -1,0 +1,23 @@
+{
+  "model_name": "radon",
+  "model_type": "mistral",
+  "vocab_size": 32000,
+  "hidden_size": 4096,
+  "num_layers": 32,
+  "num_attention_heads": 32,
+  "num_kv_heads": 8,
+  "intermediate_size": 14336,
+  "max_position_embeddings": 32768,
+  "sliding_window": 4096,
+  "rope_theta": 10000.0,
+  "rms_norm_eps": 1e-6,
+  "dropout": 0.1,
+  "attention_dropout": 0.1,
+  "activation_function": "silu",
+  "layer_norm_eps": 1e-6,
+  "initializer_range": 0.02,
+  "use_cache": true,
+  "torch_dtype": "float32",
+  "output_attentions": false,
+  "output_hidden_states": false
+}

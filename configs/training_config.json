@@ -1,0 +1,16 @@
+{
+  "learning_rate": 5e-4,
+  "batch_size": 8,
+  "num_epochs": 3,
+  "warmup_steps": 100,
+  "weight_decay": 0.01,
+  "gradient_accumulation_steps": 4,
+  "max_grad_norm": 1.0,
+  "save_steps": 500,
+  "eval_steps": 500,
+  "logging_steps": 100,
+  "output_dir": "./outputs",
+  "seed": 42,
+  "fp16": false,
+  "dataloader_num_workers": 2
+}

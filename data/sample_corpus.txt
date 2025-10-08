@@ -1,0 +1,14 @@
+Привет! Это примерный корпус для обучения токенизатора.
+Hello! This is a sample corpus for tokenizer training.
+
+Русский текст для токенизации.
+English text for tokenization.
+
+Машинное обучение и обработка естественного языка.
+Machine learning and natural language processing.
+
+Трансформеры - это мощные модели для NLP.
+Transformers are powerful models for NLP.
+
+Генерация текста с помощью нейронных сетей.
+Text generation using neural networks.
