@@ -1,4 +1,4 @@
-# RADON Custom Transformer Framework
+# RADON SAI
 
 Модульный каркас для создания кастомных трансформеров с поддержкой GPT-2 и T5 архитектур, кастомным токенизатором на базе SentencePiece, и интеграцией с Hugging Face и VK для простого деплоя через Docker.
 
